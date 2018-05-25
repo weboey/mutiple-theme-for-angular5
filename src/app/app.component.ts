@@ -1,19 +1,20 @@
 import { Component, NgZone} from '@angular/core';
-
+declare let process: any;
+// process ? process.env.themes :
+const themes = ['blue', 'green', 'red'];
+console.log(themes);
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'app';
   appSkin: any;
   constructor(private _ngZone: NgZone) {
     this.appSkin = {
-      themes: process.env.themes,
+      themes:  themes,
       currentLink: null
     };
-    console.log('app component----->>>>>>');
     console.log(this.appSkin);
   }
 
@@ -24,7 +25,7 @@ export class AppComponent {
   createThemeLink(theme: any) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = `./theme-${theme}.css`;
+    link.href = `./gulp/css/theme-${theme}.css`;
     link.dataset.theme = theme;
     document.head.appendChild(link);
     link.onload = () => {
@@ -51,4 +52,5 @@ export class AppComponent {
   private runTimeoutOutsideZone(fn: Function, delay = 0) {
     this._ngZone.runOutsideAngular(() => setTimeout(fn, delay));
   }
+
 }

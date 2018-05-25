@@ -35,7 +35,7 @@ module.exports = {
     devtool: 'source-map',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/', //  /mutiple-theme-for-angular/dist/
+      publicPath: '/mutiple-theme-for-angular/dist/', //  /mutiple-theme-for-angular/dist/
       filename: '[name].bundle.js'
     },
     resolve: {
@@ -52,7 +52,7 @@ module.exports = {
             test: /\.ts$/,
             include: path.resolve(__dirname, 'src'),
             use: ['awesome-typescript-loader', 'angular2-template-loader'],
-            exclude: [/node_modules/,/\.(spec|e2e)\.ts$/]
+            exclude: [/\/node_modules/,/\/build/,/\.(spec|e2e|task_helpers)\.ts$/]
           },
           {
             test: /\.html$/,
@@ -100,6 +100,7 @@ module.exports = {
     devServer: {
       contentBase: './dist',
       compress: true,
+      inline:true, // 当源文件改变时会自动刷新页面
       port: 52581
     }
 };

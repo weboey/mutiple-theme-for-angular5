@@ -4,8 +4,8 @@ import {Component, OnInit} from '@angular/core';
   selector: 'app-demo-b',
   template: `
     <button>采菊东篱下，喝碗菊花茶</button>
-  `,
-  styleUrls: ['b-component.scss'] // styles: [require('./b-component.scss')]
+  `
+  // styleUrls: ['b-component.scss'] // styles: [require('./b-component.scss')]
 })
 
 export class DemoBComponent implements OnInit {
